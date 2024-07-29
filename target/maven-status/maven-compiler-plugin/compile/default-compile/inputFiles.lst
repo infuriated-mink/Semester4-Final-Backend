@@ -1,0 +1,16 @@
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/RESTServiceApplication.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/attendee/Attendee.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/attendee/AttendeeController.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/attendee/AttendeeService.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/event/Event.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/event/EventController.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/event/EventService.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/eventsspeakers/EventsSpeakers.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/eventsspeakers/EventsSpeakersController.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/eventsspeakers/EventsSpeakersService.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/speakers/Speakers.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/speakers/SpeakersController.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/speakers/SpeakersService.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/venue/Venue.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/venue/VenueController.java
+/Users/keyinstudent/IdeaProjects/VenueSnap/src/main/java/com/keyin/venuesnap/venue/VenueService.java
