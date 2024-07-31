@@ -1,40 +1,42 @@
 package com.keyin.venuesnap.speakers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Optional;
 
 @Service
 public class SpeakersService {
 
-    private Map<Integer, Speakers> speakersMap = new HashMap<>();
+    @Autowired
+    private SpeakersRepository speakersRepository;
 
     public Speakers getSpeaker(int id) {
-        return speakersMap.get(id);
+        return speakersRepository.findById(id).orElse(null);
     }
 
     public Speakers createSpeaker(Speakers newSpeaker) {
-        speakersMap.put(speakersMap.size() + 1, newSpeaker);
-        return newSpeaker;
+        return speakersRepository.save(newSpeaker);
     }
 
     public List<Speakers> getAllSpeakers() {
-        return new ArrayList<>(speakersMap.values());
+        return speakersRepository.findAll();
     }
 
     public Speakers updateSpeaker(int id, Speakers updatedSpeaker) {
-        Speakers speakerToUpdate = speakersMap.get(id);
-        if (speakerToUpdate != null) {
-            speakerToUpdate.setSpeakerName(updatedSpeaker.getSpeakerName());
-            speakerToUpdate.setTopic(updatedSpeaker.getTopic());
+        if (speakersRepository.existsById(id)) {
+            updatedSpeaker.setSpeakerId(id);
+            return speakersRepository.save(updatedSpeaker);
         }
-        return speakerToUpdate;
+        return null;
     }
 
     public void deleteSpeaker(int id) {
-        speakersMap.remove(id);
+        speakersRepository.deleteById(id);
+    }
+
+    public Optional<Speakers> findBySpeakerName(String speakerName) {
+        return speakersRepository.findBySpeakerName(speakerName);
     }
 }

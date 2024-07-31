@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // need this to be able to access say http://localhost:8080/hello
+@RestController
 @CrossOrigin
 public class VenueController {
+
     @Autowired
     private VenueService venueService;
 
     @GetMapping("search_venue")
-    public List<Venue> searchVenue(@RequestParam(value = "name", required = false) String name, String location) {
+    public List<Venue> searchVenue(@RequestParam(value = "name", required = false) String name,
+                                   @RequestParam(value = "location", required = false) String location) {
         return venueService.findVenuesByNameAndLocation(name, location);
     }
 
@@ -25,8 +27,6 @@ public class VenueController {
     public Venue getVenueById(@PathVariable Integer id) {
         return venueService.getVenue(id);
     }
-
-//    @GetMapping("/api/events/venue/")
 
     @PostMapping("venue")
     public Venue addVenue(@RequestBody Venue venue) {

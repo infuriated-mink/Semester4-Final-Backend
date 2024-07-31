@@ -5,24 +5,20 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // need this to be able to access say http://localhost:8080/hello
+@RestController
 @CrossOrigin
 public class EventsSpeakersController {
+
     @Autowired
     private EventsSpeakersService eventsSpeakersService;
 
-//    @GetMapping("search_events_speakers")
-//    public List<EventsSpeakers> searchEventsSpeakersByEventId(@RequestParam(value = "eventId", required = false) Integer eventId) {
-//        return eventsSpeakersService.findEventsSpeakersByEventId(eventId);
-//    }
-//
-//    @GetMapping("search_events_speakers")
-//    public List<EventsSpeakers> searchEventsSpeakersBySpeakerId(@RequestParam(value = "speakerId", required = false) Integer speakerId) {
-//        return eventsSpeakersService.findEventsSpeakersBySpeakerId(speakerId);
-//    }
+    @GetMapping("events_speakers/{id}")
+    public EventsSpeakers getEventsSpeakersById(@PathVariable int id) {
+        return eventsSpeakersService.getEventsSpeakersById(id);
+    }
 
     @GetMapping("events_speakers")
-    public List<EventsSpeakers> getEventsSpeakersByEventId(@RequestParam("eventId") Integer eventId) {
+    public List<EventsSpeakers> getEventsSpeakersByEventId(@RequestParam(value = "eventId", required = false) Integer eventId) {
         if (eventId != null) {
             return eventsSpeakersService.getEventsSpeakersByEventId(eventId);
         }
@@ -35,12 +31,12 @@ public class EventsSpeakersController {
     }
 
     @PutMapping("events_speakers/{id}")
-    public EventsSpeakers updateEventsSpeakers(@PathVariable Integer id, @RequestBody EventsSpeakers updatedEventsSpeakers) {
+    public EventsSpeakers updateEventsSpeakers(@PathVariable int id, @RequestBody EventsSpeakers updatedEventsSpeakers) {
         return eventsSpeakersService.updateEventsSpeakers(id, updatedEventsSpeakers);
     }
 
     @DeleteMapping("events_speakers/{id}")
-    public void deleteEventsSpeakers(@PathVariable Integer id) {
+    public void deleteEventsSpeakers(@PathVariable int id) {
         eventsSpeakersService.deleteEventsSpeakers(id);
     }
 }

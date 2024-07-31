@@ -1,9 +1,20 @@
 package com.keyin.venuesnap.speakers;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "speakers")
 public class Speakers {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int speakerId;
+
     private String speakerName;
     private String topic;
+
+    public Speakers() {
+    }
 
     public Speakers(int speakerId, String speakerName, String topic) {
         this.speakerId = speakerId;
@@ -11,6 +22,7 @@ public class Speakers {
         this.topic = topic;
     }
 
+    // Getters and Setters
     public int getSpeakerId() {
         return speakerId;
     }
