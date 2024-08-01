@@ -5,14 +5,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController // need this to be able to access say http://localhost:8080/hello
+@RestController
 @CrossOrigin
 public class AttendeeController {
+
     @Autowired
     private AttendeeService attendeeService;
 
     @GetMapping("search_attendee")
-    public List<Attendee> searchAttendee(@RequestParam(value = "lastName", required = false) String lastName, String email) {
+    public List<Attendee> searchAttendee(@RequestParam(value = "lastName", required = false) String lastName,
+                                         @RequestParam(value = "email", required = false) String email) {
         return attendeeService.findAttendeesByLastNameAndEmail(lastName, email);
     }
 

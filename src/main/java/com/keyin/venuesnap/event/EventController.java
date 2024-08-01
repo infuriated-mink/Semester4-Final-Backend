@@ -8,12 +8,13 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class EventController {
+
     @Autowired
     private EventService eventService;
 
     @GetMapping("/event/{id}")
     public Event getEvent(@PathVariable Integer id) {
-        return eventService.getEventId(id);
+        return eventService.getEventById(id);
     }
 
     @GetMapping("/events")

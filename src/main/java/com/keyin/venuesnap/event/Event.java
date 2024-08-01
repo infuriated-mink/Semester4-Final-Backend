@@ -1,12 +1,21 @@
 package com.keyin.venuesnap.event;
 
-import java.util.List;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "events")
 public class Event {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eventId;
+
     private String eventName;
     private String date;
     private int venueId;
+
+    public Event() {
+    }
 
     public Event(int eventId, String eventName, String date, int venueId) {
         this.eventId = eventId;
@@ -15,7 +24,7 @@ public class Event {
         this.venueId = venueId;
     }
 
-
+    // Getters and Setters
     public int getEventId() {
         return eventId;
     }

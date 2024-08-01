@@ -1,26 +1,27 @@
 package com.keyin.venuesnap.attendee;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "attendees")
 public class Attendee {
-    private int attendeeId;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
     private String firstName;
     private String lastName;
     private String email;
-    private int eventId;
+    private Integer eventId;
 
-    public Attendee(int attendeeId, String firstName, String lastName, String email, int eventId) {
-        this.attendeeId = attendeeId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = email;
-        this.eventId = eventId;
+    // Getters and Setters
+    public Integer getId() {
+        return id;
     }
 
-    public int getAttendeeId() {
-        return attendeeId;
-    }
-
-    public void setAttendeeId(int attendeeId) {
-        this.attendeeId = attendeeId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -47,11 +48,11 @@ public class Attendee {
         this.email = email;
     }
 
-    public int getEventId() {
+    public Integer getEventId() {
         return eventId;
     }
 
-    public void setEventId(int eventId) {
+    public void setEventId(Integer eventId) {
         this.eventId = eventId;
     }
 }

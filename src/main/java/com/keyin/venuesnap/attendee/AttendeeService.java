@@ -1,64 +1,45 @@
 package com.keyin.venuesnap.attendee;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class AttendeeService {
-    private Map<Integer, Attendee> attendeeMap = new HashMap<Integer, Attendee>();
 
-    public Attendee getAttendee(Integer index) {
-        return attendeeMap.get(index);
+    @Autowired
+    private AttendeeRepository attendeeRepository;
+
+    public Attendee getAttendee(Integer id) {
+        return attendeeRepository.findById(id).orElse(null);
     }
 
     public Attendee createAttendee(Attendee newAttendee) {
-        attendeeMap.put(attendeeMap.size() + 1, newAttendee);
-        return newAttendee;
+        return attendeeRepository.save(newAttendee);
     }
 
     public List<Attendee> getAllAttendees() {
-        // List.copyOf() because .values() returns a collection and needs to be cast to a List
-        return List.copyOf(attendeeMap.values());
+        return attendeeRepository.findAll();
     }
 
-    public Attendee updateAttendee(Integer index, Attendee updatedAttendee) {
-        Attendee attendeeToUpdate = attendeeMap.get(index);
-
-        attendeeToUpdate.setFirstName(updatedAttendee.getFirstName());
-        attendeeToUpdate.setLastName(updatedAttendee.getLastName());
-        attendeeToUpdate.setEmail(updatedAttendee.getEmail());
-
-        attendeeMap.put(index, attendeeToUpdate);
-
-        return attendeeToUpdate;
+    public Attendee updateAttendee(Integer id, Attendee updatedAttendee) {
+        if (attendeeRepository.existsById(id)) {
+            updatedAttendee.setId(id);
+            return attendeeRepository.save(updatedAttendee);
+        }
+        return null;
     }
 
-    public void deleteAttendee(Integer index) {
-        attendeeMap.remove(index);
+    public void deleteAttendee(Integer id) {
+        attendeeRepository.deleteById(id);
     }
 
     public List<Attendee> findAttendeesByLastNameAndEmail(String lastName, String email) {
-        List<Attendee> attendeesFound = new ArrayList<Attendee>();
-
-        for(Attendee attendee : attendeeMap.values()) {
-            if(attendee.getLastName().equalsIgnoreCase(lastName) && attendee.getEmail().equalsIgnoreCase(email)) {
-                attendeesFound.add(attendee);
-            }
-        }
-        return attendeesFound;
+        return attendeeRepository.findByLastNameAndEmail(lastName, email);
     }
 
     public List<Attendee> getAttendeesByEventId(Integer eventId) {
-        List<Attendee> attendees = new ArrayList<>();
-        for (Attendee attendee : this.getAllAttendees()) {
-            if (attendee.getEventId() == eventId) {
-                attendees.add(attendee);
-            }
-        }
-        return attendees;
+        return attendeeRepository.findByEventId(eventId);
     }
 }

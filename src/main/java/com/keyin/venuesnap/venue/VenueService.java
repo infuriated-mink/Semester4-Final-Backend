@@ -1,54 +1,41 @@
 package com.keyin.venuesnap.venue;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class VenueService {
-    private Map<Integer, Venue> venueMap = new HashMap<Integer, Venue>();
 
-    public Venue getVenue(Integer index) {
-        return venueMap.get(index);
+    @Autowired
+    private VenueRepository venueRepository;
+
+    public Venue getVenue(Integer id) {
+        return venueRepository.findById(id).orElse(null);
     }
 
     public Venue createVenue(Venue newVenue) {
-        venueMap.put(venueMap.size() + 1, newVenue);
-        return newVenue;
+        return venueRepository.save(newVenue);
     }
 
     public List<Venue> getAllVenues() {
-        // List.copyOf() because .values() returns a collection and needs to be cast to a List
-        return List.copyOf(venueMap.values());
+        return venueRepository.findAll();
     }
 
-    public Venue updateVenue(Integer index, Venue updatedVenue) {
-        Venue venueToUpdate = venueMap.get(index);
-
-        venueToUpdate.setVenueName(updatedVenue.getVenueName());
-        venueToUpdate.setLocation(updatedVenue.getLocation());
-        venueToUpdate.setCapacity(updatedVenue.getCapacity());
-
-        venueMap.put(index, venueToUpdate);
-
-        return venueToUpdate;
+    public Venue updateVenue(Integer id, Venue updatedVenue) {
+        if (venueRepository.existsById(id)) {
+            updatedVenue.setVenueId(id);
+            return venueRepository.save(updatedVenue);
+        }
+        return null;
     }
 
-    public void deleteVenue(Integer index) {
-        venueMap.remove(index);
+    public void deleteVenue(Integer id) {
+        venueRepository.deleteById(id);
     }
 
     public List<Venue> findVenuesByNameAndLocation(String name, String location) {
-        List<Venue> venuesFound = new ArrayList<Venue>();
-
-        for(Venue venue : venueMap.values()) {
-            if(venue.getVenueName().equalsIgnoreCase(name) && venue.getLocation().equalsIgnoreCase(location)) {
-                venuesFound.add(venue);
-            }
-        }
-        return venuesFound;
+        return venueRepository.findByVenueNameAndLocation(name, location);
     }
 }

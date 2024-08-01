@@ -1,10 +1,21 @@
 package com.keyin.venuesnap.venue;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "venues")
 public class Venue {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int venueId;
+
     private String venueName;
     private String location;
     private int capacity;
+
+    public Venue() {
+    }
 
     public Venue(int venueId, String venueName, String location, int capacity) {
         this.venueId = venueId;
@@ -13,6 +24,7 @@ public class Venue {
         this.capacity = capacity;
     }
 
+    // Getters and Setters
     public int getVenueId() {
         return venueId;
     }

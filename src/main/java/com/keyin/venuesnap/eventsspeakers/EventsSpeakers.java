@@ -1,21 +1,33 @@
 package com.keyin.venuesnap.eventsspeakers;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "events_speakers")
 public class EventsSpeakers {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     private int speakerId;
     private int eventId;
 
+    public EventsSpeakers() {
+    }
+
+    public EventsSpeakers(int speakerId, int eventId) {
+        this.speakerId = speakerId;
+        this.eventId = eventId;
+    }
+
+    // Getters and Setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public EventsSpeakers(int speakerId, int eventId) {
-        this.speakerId = speakerId;
-        this.eventId = eventId;
     }
 
     public int getSpeakerId() {
