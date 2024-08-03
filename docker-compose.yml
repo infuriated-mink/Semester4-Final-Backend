@@ -1,0 +1,13 @@
+version: '3'
+services:
+  myapp-main:
+    image: venuesnap
+    ports:
+      - 8080:8080
+    environment:
+      - spring.datasource.url=jdbc:mysql://venuesnap-database.c3aeeocyof87.eu-west-2.rds.amazonaws.com/venuesnap-database
+      - spring.datasource.username=admin
+      - spring.datasource.password=Keyin2021
+#      - spring.jpa.hibernate.ddl-auto=update
+#      - spring.jpa.show-sql=true
+#      - spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL8Dialect
