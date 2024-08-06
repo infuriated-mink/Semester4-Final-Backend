@@ -6,4 +6,5 @@ import java.util.List;
 public interface EventRepository extends JpaRepository<Event, Integer> {
     List<Event> findByVenueId(int venueId);
     List<Event> findByDate(String date);
+//    List<Event> findByName(String name);
 }
