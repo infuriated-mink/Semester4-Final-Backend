@@ -7,10 +7,6 @@ import jakarta.persistence.*;
 @Table(name = "events")
 
 public class Event {
-    @ManyToOne
-    @JoinColumn(name = "venue_id")
-    private Venue venue;
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eventId;
@@ -18,6 +14,10 @@ public class Event {
     private String date;
     private int venueId;
     private String image;
+
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
 
     public Event() {
     }
