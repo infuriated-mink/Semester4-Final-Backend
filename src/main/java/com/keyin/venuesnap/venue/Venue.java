@@ -8,7 +8,7 @@ public class Venue {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int venueId;
+    private Integer id;
 
     private String venueName;
     private String location;
@@ -17,20 +17,20 @@ public class Venue {
     public Venue() {
     }
 
-    public Venue(int venueId, String venueName, String location, int capacity) {
-        this.venueId = venueId;
+    public Venue(Integer venueId, String venueName, String location, int capacity) {
+        this.id = venueId;
         this.venueName = venueName;
         this.location = location;
         this.capacity = capacity;
     }
 
     // Getters and Setters
-    public int getVenueId() {
-        return venueId;
+    public Integer getVenueId() {
+        return id;
     }
 
-    public void setVenueId(int venueId) {
-        this.venueId = venueId;
+    public void setVenueId(Integer venueId) {
+        this.id = venueId;
     }
 
     public String getVenueName() {

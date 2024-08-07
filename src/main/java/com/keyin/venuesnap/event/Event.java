@@ -1,31 +1,36 @@
 package com.keyin.venuesnap.event;
 
+import com.keyin.venuesnap.venue.Venue;
 import jakarta.persistence.*;
 import com.keyin.venuesnap.venue.Venue;
 
 @Entity
 @Table(name = "events")
-public class Event {
 
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int eventId;
-
     private String eventName;
     private String date;
 
     @ManyToOne
     @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
     private Venue venue;
+    private String image;
+
+    @Column(name = "id")
+    private Integer venueId;
 
     public Event() {
     }
 
-    public Event(int eventId, String eventName, String date, Venue venue) {
+    public Event(int eventId, String eventName, String date, Integer venueId, String image) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.date = date;
-        this.venue = venue;
+        this.venueId = venueId;
+        this.image = image;
     }
 
     // Getters and Setters
@@ -51,6 +56,22 @@ public class Event {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Integer getVenueId() {
+        return venueId;
+    }
+
+    public void setVenueId(Integer venueId) {
+        this.venueId = venueId;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public Venue getVenue() {

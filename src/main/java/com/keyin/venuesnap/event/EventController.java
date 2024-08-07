@@ -1,5 +1,6 @@
 package com.keyin.venuesnap.event;
 
+import com.keyin.venuesnap.venue.Venue;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,6 +12,16 @@ public class EventController {
 
     @Autowired
     private EventService eventService;
+
+//    @GetMapping("search_event")
+//    public List<Event> searchEvent(@RequestParam(value = "name", required = false) String name) {
+//        return eventService.findEventByName(name);
+//    }
+
+    @GetMapping("/event/{id}/venueName")
+    public String getVenueNameByEventId(@PathVariable int id) {
+        return eventService.getVenueNameByEventId(id);
+    }
 
     @GetMapping("/event/{id}")
     public Event getEvent(@PathVariable Integer id) {
