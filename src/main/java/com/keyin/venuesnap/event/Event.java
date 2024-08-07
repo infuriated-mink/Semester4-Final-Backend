@@ -2,11 +2,9 @@ package com.keyin.venuesnap.event;
 
 import com.keyin.venuesnap.venue.Venue;
 import jakarta.persistence.*;
-import com.keyin.venuesnap.venue.Venue;
 
 @Entity
 @Table(name = "events")
-
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,17 +17,14 @@ public class Event {
     private Venue venue;
     private String image;
 
-    @Column(name = "id")
-    private Integer venueId;
-
     public Event() {
     }
 
-    public Event(int eventId, String eventName, String date, Integer venueId, String image) {
+    public Event(int eventId, String eventName, String date, Venue venue, String image) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.date = date;
-        this.venueId = venueId;
+        this.venue = venue;
         this.image = image;
     }
 
@@ -58,12 +53,12 @@ public class Event {
         this.date = date;
     }
 
-    public Integer getVenueId() {
-        return venueId;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenueId(Integer venueId) {
-        this.venueId = venueId;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 
     public String getImage() {
@@ -72,13 +67,5 @@ public class Event {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public Venue getVenue() {
-        return venue;
-    }
-
-    public void setVenue(Venue venue) {
-        this.venue = venue;
     }
 }
