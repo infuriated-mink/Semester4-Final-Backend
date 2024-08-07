@@ -12,17 +12,19 @@ public class Event {
     private int eventId;
     private String eventName;
     private String date;
-    private int venueId;
     private String image;
 
     @ManyToOne
-    @JoinColumn(name = "venue_id")
+    @JoinColumn(name = "id", insertable = false, updatable = false)
     private Venue venue;
+
+    @Column(name = "id")
+    private Integer venueId;
 
     public Event() {
     }
 
-    public Event(int eventId, String eventName, String date, int venueId, String image) {
+    public Event(int eventId, String eventName, String date, Integer venueId, String image) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.date = date;
@@ -55,11 +57,11 @@ public class Event {
         this.date = date;
     }
 
-    public int getVenueId() {
+    public Integer getVenueId() {
         return venueId;
     }
 
-    public void setVenueId(int venueId) {
+    public void setVenueId(Integer venueId) {
         this.venueId = venueId;
     }
 
