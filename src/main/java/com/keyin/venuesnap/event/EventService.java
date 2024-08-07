@@ -2,7 +2,6 @@ package com.keyin.venuesnap.event;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.util.List;
 
 @Service
@@ -36,7 +35,7 @@ public class EventService {
     }
 
     public List<Event> getEventsByVenueId(int venueId) {
-        return eventRepository.findByVenueId(venueId);
+        return eventRepository.findByVenue_VenueId(venueId);
     }
 
     public List<Event> getEventsByDate(String date) {

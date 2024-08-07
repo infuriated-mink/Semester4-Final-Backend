@@ -3,6 +3,8 @@
 /Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/attendee/AttendeeController.java
 /Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/attendee/AttendeeRepository.java
 /Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/attendee/AttendeeService.java
+/Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/config/SecurityConfig.java
+/Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/config/WebConfig.java
 /Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/event/Event.java
 /Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/event/EventController.java
 /Users/keyinstudent/Documents/GitHub/Semester4-Final-Backend/src/main/java/com/keyin/venuesnap/event/EventRepository.java

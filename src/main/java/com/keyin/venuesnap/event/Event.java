@@ -1,6 +1,7 @@
 package com.keyin.venuesnap.event;
 
 import jakarta.persistence.*;
+import com.keyin.venuesnap.venue.Venue;
 
 @Entity
 @Table(name = "events")
@@ -12,16 +13,19 @@ public class Event {
 
     private String eventName;
     private String date;
-    private int venueId;
+
+    @ManyToOne
+    @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
+    private Venue venue;
 
     public Event() {
     }
 
-    public Event(int eventId, String eventName, String date, int venueId) {
+    public Event(int eventId, String eventName, String date, Venue venue) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.date = date;
-        this.venueId = venueId;
+        this.venue = venue;
     }
 
     // Getters and Setters
@@ -49,11 +53,11 @@ public class Event {
         this.date = date;
     }
 
-    public int getVenueId() {
-        return venueId;
+    public Venue getVenue() {
+        return venue;
     }
 
-    public void setVenueId(int venueId) {
-        this.venueId = venueId;
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 }
