@@ -18,11 +18,12 @@ public class Event {
     public Event() {
     }
 
-    public Event(int eventId, String eventName, String date, int venueId) {
+    public Event(int eventId, String eventName, String date, int venueId, String image) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.date = date;
         this.venueId = venueId;
+        this.image = image;
     }
 
     // Getters and Setters
