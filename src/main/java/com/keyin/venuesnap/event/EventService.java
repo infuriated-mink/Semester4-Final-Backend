@@ -1,5 +1,7 @@
 package com.keyin.venuesnap.event;
 
+import com.keyin.venuesnap.venue.Venue;
+import com.keyin.venuesnap.venue.VenueRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -11,11 +13,18 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private VenueRepository venueRepository;
+
     public Event getEventById(int eventId) {
         return eventRepository.findById(eventId).orElse(null);
     }
 
     public Event createEvent(Event newEvent) {
+        Venue venue = venueRepository.findById(newEvent.getVenueId()).orElse(null);
+        if (venue != null) {
+            newEvent.setVenue(venue);
+        }
         return eventRepository.save(newEvent);
     }
 
@@ -25,6 +34,10 @@ public class EventService {
 
     public Event updateEvent(int eventId, Event updatedEvent) {
         if (eventRepository.existsById(eventId)) {
+            Venue venue = venueRepository.findById(updatedEvent.getVenueId()).orElse(null);
+            if (venue != null) {
+                updatedEvent.setVenue(venue);
+            }
             updatedEvent.setEventId(eventId);
             return eventRepository.save(updatedEvent);
         }

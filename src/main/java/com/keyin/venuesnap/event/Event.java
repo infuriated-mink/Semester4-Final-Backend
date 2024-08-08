@@ -2,8 +2,10 @@ package com.keyin.venuesnap.event;
 
 import com.keyin.venuesnap.venue.Venue;
 import jakarta.persistence.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Entity
+@CrossOrigin
 @Table(name = "events")
 public class Event {
 
@@ -13,22 +15,23 @@ public class Event {
 
     private String eventName;
     private String date;
+    private String image;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "venue_id", referencedColumnName = "venueId", insertable = false, updatable = false)
+//    @JoinColumn(name = "venue_id", referencedColumnName = "venueId")
     private Venue venue;
 
-    @Column(name = "venue_id")
+//    @Column(name = "venue_id")
     private int venueId;
 
     public Event() {
     }
 
-    public Event(int eventId, String eventName, String date, int venueId) {
+    public Event(int eventId, String eventName, String date, Venue venue) {
         this.eventId = eventId;
         this.eventName = eventName;
         this.date = date;
-        this.venueId = venueId;
+        this.venue = venue;
     }
 
     // Getters and Setters
@@ -56,6 +59,14 @@ public class Event {
         this.date = date;
     }
 
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+    }
+
     public int getVenueId() {
         return venueId;
     }
@@ -64,14 +75,11 @@ public class Event {
         this.venueId = venueId;
     }
 
-    public Venue getVenue() {
-        return venue;
+    public String getImage() {
+        return image;
     }
 
-    public void setVenue(Venue venue) {
-        this.venue = venue;
-        if (venue != null) {
-            this.venueId = venue.getVenueId();
-        }
+    public void setImage(String image) {
+        this.image = image;
     }
 }
