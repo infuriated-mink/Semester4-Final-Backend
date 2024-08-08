@@ -42,4 +42,16 @@ public class EventService {
     public List<Event> getEventsByDate(String date) {
         return eventRepository.findByDate(date);
     }
+
+    public String getVenueNameByEventId(int eventId) {
+        Event event = eventRepository.findById(eventId).orElse(null);
+        if (event != null && event.getVenue() != null) {
+            return event.getVenue().getVenueName();
+        }
+        return null;
+    }
+
+    public List<Event> findEventByEventName(String name) {
+        return eventRepository.findByEventName(name);
+    }
 }

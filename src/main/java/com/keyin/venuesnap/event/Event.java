@@ -1,5 +1,6 @@
 package com.keyin.venuesnap.event;
 
+import com.keyin.venuesnap.venue.Venue;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,12 @@ public class Event {
 
     private String eventName;
     private String date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "venue_id", referencedColumnName = "venueId", insertable = false, updatable = false)
+    private Venue venue;
+
+    @Column(name = "venue_id")
     private int venueId;
 
     public Event() {
@@ -55,5 +62,16 @@ public class Event {
 
     public void setVenueId(int venueId) {
         this.venueId = venueId;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
+        if (venue != null) {
+            this.venueId = venue.getVenueId();
+        }
     }
 }
