@@ -8,6 +8,7 @@ com/keyin/venuesnap/event/EventService.class
 com/keyin/venuesnap/speakers/SpeakersController.class
 com/keyin/venuesnap/speakers/SpeakersRepository.class
 com/keyin/venuesnap/attendee/Attendee.class
+com/keyin/venuesnap/WebConfig.class
 com/keyin/venuesnap/speakers/SpeakersService.class
 com/keyin/venuesnap/attendee/AttendeeService.class
 com/keyin/venuesnap/venue/VenueService.class
@@ -15,6 +16,7 @@ com/keyin/venuesnap/eventsspeakers/EventsSpeakers.class
 com/keyin/venuesnap/event/Event.class
 com/keyin/venuesnap/event/EventRepository.class
 com/keyin/venuesnap/venue/VenueController.class
+com/keyin/venuesnap/WebConfig$1.class
 com/keyin/RESTServiceApplication.class
 com/keyin/venuesnap/speakers/Speakers.class
 com/keyin/venuesnap/venue/VenueRepository.class

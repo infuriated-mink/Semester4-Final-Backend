@@ -6,18 +6,21 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@CrossOrigin
+@RequestMapping("/events")
+@CrossOrigin(origins = "http://localhost:3000", allowCredentials = "true")
 public class EventController {
 
     @Autowired
     private EventService eventService;
 
-    @GetMapping("/event/{id}")
+    // Get an event by ID
+    @GetMapping("/{id}")
     public Event getEvent(@PathVariable Integer id) {
         return eventService.getEventById(id);
     }
 
-    @GetMapping("/events")
+    // Get all events with optional filtering by venueId or date
+    @GetMapping
     public List<Event> getAllEvents(@RequestParam(value = "venueId", required = false) Integer venueId,
                                     @RequestParam(value = "date", required = false) String date) {
         if (venueId != null) {
@@ -28,18 +31,21 @@ public class EventController {
         return eventService.getAllEvents();
     }
 
-    @PostMapping("/event")
+    // Create a new event
+    @PostMapping
     public Event createEvent(@RequestBody Event newEvent) {
         return eventService.createEvent(newEvent);
     }
 
-    @PutMapping("/event/{id}")
-    public Event updateEvent(@PathVariable int id, @RequestBody Event updatedEvent) {
+    // Update an existing event
+    @PutMapping("/{id}")
+    public Event updateEvent(@PathVariable Integer id, @RequestBody Event updatedEvent) {
         return eventService.updateEvent(id, updatedEvent);
     }
 
-    @DeleteMapping("/event/{id}")
-    public void deleteEvent(@PathVariable int id) {
+    // Delete an event by ID
+    @DeleteMapping("/{id}")
+    public void deleteEvent(@PathVariable Integer id) {
         eventService.deleteEvent(id);
     }
 }
