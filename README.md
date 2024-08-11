@@ -1,4 +1,4 @@
-# VenueSnap Backend README
+# VenueSnap Backend
 ---
 # Table of Contents
 
