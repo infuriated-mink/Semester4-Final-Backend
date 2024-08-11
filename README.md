@@ -32,10 +32,35 @@ VenueSnap is an event management platform backend, designed to facilitate the or
 
 ## Main Files
 
-- **RESTServiceApplication.java**: The main entry point of the Spring Boot application.
-- **WebConfig.java**: Configuration class for setting up CORS mappings to allow cross-origin requests from specified origins[1].
-- **EventControllerTest.java**: Test class for the EventController, containing unit tests for various event-related operations[2].
-- **AttendeeServiceTest.java**: Test class for the AttendeeService, containing unit tests for attendee management operations[3].
+# Main Files
+
+1. **EventController.java**: This file defines the RESTful API endpoints for managing events. It includes operations such as:
+   - **Get an event by ID**: Retrieve a specific event using its ID.
+   - **Get all events**: Retrieve all events with optional filtering by `venueId` or `date`.
+   - **Create a new event**: Add a new event to the database.
+   - **Update an existing event**: Modify the details of an existing event.
+   - **Delete an event by ID**: Remove an event from the database using its ID[1].
+
+2. **Event.java**: This file represents the Event entity, mapped to the "events" table in the database. It includes fields such as:
+   - `eventId`: Unique identifier for the event.
+   - `eventName`: Name of the event.
+   - `date`: Date of the event.
+   - `venueId`: Identifier for the venue where the event is held.
+   - `image`: URL or path to an image associated with the event.
+   - It also contains the necessary getters and setters for these fields[2].
+
+3. **EventRepository.java**: This file is an interface extending `JpaRepository`, providing methods for accessing event data. It includes custom query methods such as:
+   - `findByVenueId(int venueId)`: Retrieve events based on the venue ID.
+   - `findByDate(String date)`: Retrieve events occurring on a specific date[3].
+
+4. **EventService.java**: This file contains the business logic for event management. It interacts with the `EventRepository` to perform operations such as:
+   - `getEventById(int eventId)`: Retrieve a specific event by its ID.
+   - `createEvent(Event newEvent)`: Save a new event to the database.
+   - `getAllEvents()`: Retrieve all events.
+   - `updateEvent(int eventId, Event updatedEvent)`: Update the details of an existing event.
+   - `deleteEvent(int eventId)`: Delete an event by its ID.
+   - `getEventsByVenueId(int venueId)`: Retrieve events based on the venue ID.
+   - `getEventsByDate(String date)`: Retrieve events occurring on a specific date[4].
 
 ## Setup Instructions
 
