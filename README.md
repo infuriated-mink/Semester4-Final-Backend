@@ -1,11 +1,16 @@
 # VenueSnap Backend
 ---
+
 # Table of Contents
 
 1. [Overview](#overview)
 2. [Features](#features)
 3. [Architecture](#architecture)
 4. [Main Files](#main-files)
+   - [EventController.java](#eventcontrollerjava)
+   - [Event.java](#eventjava)
+   - [EventRepository.java](#eventrepositoryjava)
+   - [EventService.java](#eventservicejava)
 5. [Setup Instructions](#setup-instructions)
    - [Prerequisites](#prerequisites)
    - [Deployment Steps](#deployment-steps)
